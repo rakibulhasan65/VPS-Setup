@@ -1,0 +1,28 @@
+Step-1: কে Port 3000 ব্যবহার করছে বের করুন
+ss -ltnp | grep :3000
+Step-2: ওই Process Kill করুন
+kill -9 12345  //example code
+
+Step-4: Redmine আবার চালান (Public IP সহ)
+cd /opt/redmine
+bundle exec rails server -e production -b 0.0.0.0 -p 3000
+
+IP টা check করা যে এই IP টা ranning আছে কিনা
+curl http://127.0.0.1:3000
+
+firewall পোর্ট গুলা অ্যাড করা
+firewall-cmd --add-port=3000/tcp --permanent
+firewall-cmd --reload
+Verify করুন:
+firewall-cmd --list-ports
+
+সঠিক project name বের করার সঠিক উপায়
+ls -d */ | grep wsgi
+
+অথবা সরাসরি:
+find . -name wsgi.py
+সঠিক Gunicorn Command (Example) background run
+gunicorn attendance.wsgi:application --bind 0.0.0.0:8001
+
+Production (Gunicorn – correct)
+gunicorn <project_name>.wsgi:application --bind 0.0.0.0:8001
