@@ -1,0 +1,32 @@
+উপায়–১: Windows থেকে VPS-এ ফাইল পাঠানো (সবচেয়ে সহজ ও সঠিক)
+এই কমান্ডটা আপনার Windows PC-এর CMD / PowerShell থেকে চালাবেন, VPS থেকে না।
+scp C:\temp\truepresence-frontend.zip root@SERVER_IP:/root/
+
+উপায়–২: Windows Git Bash ব্যবহার করলে
+Git Bash খুলে:
+scp /c/temp/truepresence-frontend.zip root@SERVER_IP:/root/
+
+import command-------
+=> \i /root/truepresence_backup.sql
+সার্ভার চলছে কি না চেক করতে পারেন:
+sudo systemctl status postgresql
+বা
+sudo systemctl status postgresql-15   # যদি PostgreSQL 15 ব্যবহার করেন
+যদি stopped দেখায়:
+
+sudo systemctl start postgresql
+sudo systemctl enable postgresql
+
+PostgreSQL config
+ফাইল: /var/lib/pgsql/data/postgresql.conf অথবা /etc/postgresql/15/main/postgresql.conf
+সেটিং:
+listen_addresses = '*'
+port = 5432
+pg_hba.conf
+ফাইল: /var/lib/pgsql/data/pg_hba.conf
+নিশ্চিত করুন আপনার IP/host allow আছে:
+host    all             all             127.0.0.1/32            md5
+host    all             all             ::1/128                 md5
+
+তারপর restart করুন:
+sudo systemctl restart postgresql
