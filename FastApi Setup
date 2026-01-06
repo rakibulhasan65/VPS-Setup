@@ -1,0 +1,13 @@
+কী হবে
+Terminal বন্ধ করলেও server চলবে
+Log যাবে nohup.out ফাইলে
+nohup uvicorn main:app --host 0.0.0.0 --port 8002 &
+
+One time server a run command in fastapi
+uvicorn main:app --host 0.0.0.0 --port 8002
+
+Check করবেন
+ps aux | grep uvicorn
+
+Stop করতে চাইলে
+kill -9 PID
