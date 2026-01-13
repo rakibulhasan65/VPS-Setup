@@ -30,3 +30,6 @@ host    all             all             ::1/128                 md5
 
 তারপর restart করুন:
 sudo systemctl restart postgresql
+
+trupresence psql database access...............................
+psql -h localhost -U attendance -d attendance
