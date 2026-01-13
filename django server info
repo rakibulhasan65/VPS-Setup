@@ -1,2 +1,5 @@
 web soket run project command--------------------------------
-uvicorn attendancedrf.asgi:application --host 0.0.0.0 --port 8001        
+uvicorn attendancedrf.asgi:application --host 0.0.0.0 --port 8001    
+
+background run command......................
+nohup daphne -b 0.0.0.0 -p 8001 attendancedrf.asgi:application &
