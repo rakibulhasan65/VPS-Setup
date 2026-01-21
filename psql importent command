@@ -33,3 +33,6 @@ sudo systemctl restart postgresql
 
 trupresence psql database access...............................
 psql -h localhost -U attendance -d attendance
+
+pSql Database Backup Command
+pg_dump -U truepresence -h localhost resence | gzip > resence_backup.sql.gz
